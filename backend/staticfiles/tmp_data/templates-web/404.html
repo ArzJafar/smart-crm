@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - گمشده در فضا</title>
+    <link rel="stylesheet" href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css">
+    <style>
+        body {
+            font-family: 'Vazir', sans-serif;
+            background-color: rgb(234, 234, 234);
+            color: black;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        body.dark-mode {
+            font-family: 'Vazir', sans-serif;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin: 0;
+        }
+
+        p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 15px 0 30px;
+        }
+
+        .error-image {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #135488;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <img src="{% static '/Images/404.png' %}" alt="404 - گمشده در فضا" class="error-image">
+    <h1>404 - گمشده در فضا!</h1>
+    <p>این صفحه پیدا نشد. انگاری تو فضا گم شدیم!</p>
+    <a href="/" class="btn">برگشت به صفحه اصلی</a>
+</body>
+</html>
+
+<script src="{% static 'js/theme_switcher.js' %}"></script>

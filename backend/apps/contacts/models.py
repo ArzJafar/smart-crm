@@ -95,5 +95,3 @@ class Public_Contact(models.Model):
         else:
             return "Unknown"
         
-
-

@@ -10,6 +10,8 @@ from django.conf import settings
 import cowsay
 import random
 import jdatetime
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 
 from django.shortcuts import redirect
@@ -61,3 +63,15 @@ def profile(request):
         form = CustomUserChangeForm(instance=request.user)
     
     return render(request, 'profile/profile.html', {'form': form})
+
+@api_view(['GET'])
+def test_api(request):
+    return Response({
+        'message': 'API is working!',
+        'status': 'success',
+        'data': {
+            'backend': 'Django',
+            'frontend': 'React',
+            'connection': 'successful'
+        }
+    })

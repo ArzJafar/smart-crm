@@ -24,11 +24,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'widget_tweaks',
     'bootstrap5',
-    'contacts',
-    'web',
-    'hr',
+    'apps.contacts',
+    'apps.web',
+    'apps.hr',
+    'rest_framework',
 ]
 
 # Middleware
@@ -41,11 +43,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
 ]
 
 # URL and WSGI
-ROOT_URLCONF = 'my_crm.urls'
-WSGI_APPLICATION = 'my_crm.wsgi.application'
+ROOT_URLCONF = 'smartchekad.urls'
+WSGI_APPLICATION = 'smartchekad.wsgi.application'
 
 # Templates
 TEMPLATES = [

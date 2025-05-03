@@ -11,9 +11,18 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib.auth.decorators import user_passes_test
 import jdatetime
-from web.models import UserActivityLog
+from apps.web.models import UserActivityLog
 
 jdatetime.set_locale(jdatetime.FA_LOCALE)
+
+
+from rest_framework.viewsets import ModelViewSet
+from .models import Public_Contact
+from .serializers import ContactSerializer
+
+class ContactViewSet(ModelViewSet):
+    queryset = Public_Contact.objects.all()
+    serializer_class = ContactSerializer
 
 
 def is_admin(user):

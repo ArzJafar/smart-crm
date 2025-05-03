@@ -1,0 +1,231 @@
+{% extends "master.html" %}
+
+{% block title %}افزودن مخاطب جدید{% endblock %}
+
+{% block content %}
+<div class="container mt-5 p-4 shadow-lg rounded bg-light container-list" style="direction: rtl;">
+    <h2 class="text-center text-primary mb-4">افزودن مخاطب جدید</h2>
+    <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+
+        <div class="card mb-4">
+            <div style="background-color: #155a92; text-align: right;" class="card-header text-white">اطلاعات اصلی</div>
+            <div class="card-body">
+                <div class="row">
+                    <div style="text-align: right;" class="col-md-4 mb-3">
+                        <label for="id_first_name">نام</label>
+                        <input style="text-align: right;" type="text" name="{{ contact_form.first_name.name }}" id="id_first_name" class="form-control">
+                    </div>
+                    <div style="text-align: right;" class="col-md-4 mb-3">
+                        <label for="id_last_name">نام خانوادگی</label>
+                        <input style="text-align: right;" type="text" name="{{ contact_form.last_name.name }}" id="id_last_name" class="form-control">
+                    </div>
+                    <div style="text-align: right;" class="col-md-4 mb-3">
+                        <label for="id_organization">نام سازمان</label>
+                        <input style="text-align: right;" type="text" name="{{ contact_form.organization.name }}" id="id_organization" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div style="text-align: right;" class="col-md-4 mb-3">
+                        <label for="id_category">دسته‌بندی</label>
+                        <input style="text-align: right;" type="text" name="{{ contact_form.category.name }}" id="id_category" class="form-control">
+                    </div>
+                    <div style="text-align: right;" class="col-md-4 mb-3">
+                        <label for="id_business_type">نوع کسب‌وکار</label>
+                        <input style="text-align: right;" type="text" name="{{ contact_form.business_type.name }}" id="id_business_type" class="form-control">
+                    </div>
+                    <div style="text-align: right;" class="col-md-4 mb-3">
+                        <label for="id_sex">جنسیت</label>
+                        <select style="text-align: right;" name="{{ contact_form.sex.name }}" id="id_sex" class="form-control">
+                            <option value="" selected>انتخاب کنید...</option>
+                            <option value="M">مرد</option>
+                            <option value="F">زن</option>
+                        </select>
+                    </div>
+                </div>                               
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <span>اطلاعات شماره تلفن</span>
+                <button type="button" class="btn btn-sm btn-light" onclick="addField('phone-container', 'phone')">افزودن شماره</button>
+            </div>
+            <div class="card-body" id="phone-container">
+                <div class="row phone">
+                        <div style="text-align: right;" class="col-md-3 mb-3">
+                            <label for="id_phone_number_${index}">شماره</label>
+                            <input style="text-align: right;" type="text" name="{{ contact_form.phone_number_1.name }}" id="id_phone_number_${index}" class="form-control">
+                        </div>
+                        <div style="text-align: right;" class="col-md-2 mb-3">
+                            <label for="id_phone_number_${index}_name">نام مخاطب</label>
+                            <input style="text-align: right;" type="text" name="{{ contact_form.phone_number_1_name.name }}" id="id_phone_number_${index}_name" class="form-control">
+                        </div>
+                        <div style="text-align: right;" class="col-md-2 mb-3">
+                            <label for="phone_number_${index}_organizational_position">سمت</label>
+                            <input style="text-align: right;" type="text" name="{{ contact_form.phone_number_1_organizational_position.name }}" id="phone_number_${index}_organizational_position" class="form-control">
+                        </div>
+                        <div style="text-align: right;" class="col-md-2 mb-3">
+                            <label for="id_phone_number_${index}_ex">داخلی</label>
+                            <input style="text-align: right;" type="text" name="{{ contact_form.phone_number_1_ex.name }}" id="id_phone_number_${index}_ex" class="form-control">
+                        </div>
+                        <div style="text-align: right;" class="col-md-3 mb-3">
+                            <label for="id_phone_number_${index}_note">توضیحات</label>
+                            <input style="text-align: right;" type="text" name="{{ contact_form.phone_number_1_note.name }}" id="id_phone_number_${index}_note" class="form-control">
+                        </div>
+                </div>
+            </div>            
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <span>اطلاعات موبایل</span>
+                <button type="button" class="btn btn-sm btn-light" onclick="addField('mobile-container', 'mobile')">افزودن موبایل</button>
+            </div>
+            <div class="card-body" id="mobile-container">
+                <div class="row mobile">
+                        <div class="col-md-3 mb-3">
+                            <label for="id_mobile_number_${index}">شماره موبایل</label>
+                            <input style="text-align: right;" type="text" name="mobile_number_${index}" id="id_mobile_number_${index}" class="form-control">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="id_mobile_number_${index}_name">نام مخاطب</label>
+                            <input style="text-align: right;" type="text" name="mobile_number_${index}_name" id="id_mobile_number_${index}_name" class="form-control">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="id_mobile_number_${index}_note">توضیحات</label>
+                            <input style="text-align: right;" type="text" name="mobile_number_${index}_note" id="id_mobile_number_${index}_note" class="form-control">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="mobile_number_${index}_email">ایمیل</label>
+                            <input style="text-align: right;" type="text" name="mobile_number_${index}_email" id="mobile_number_${index}_email" class="form-control">
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <span>اطلاعات آدرس</span>
+                <button type="button" class="btn btn-sm btn-light" onclick="addField('address-container', 'address')">افزودن آدرس</button>
+            </div>
+            <div class="card-body" id="address-container">
+                <div class="row address">
+                    <div class="col-md-6 mb-3">
+                        <label for="id_address_${index}">آدرس</label>
+                        <input type="text" name="{{ contact_form.address_1.name }}" id="id_address_${index}" class="form-control">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="id_postal_code_${index}">کد پستی</label>
+                        <input type="text" name="{{ contact_form.postal_code_1.name }}" id="id_postal_code_${index}" class="form-control">
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <span>اطلاعات متفرقه</span>
+            </div>
+            <div class="card-body" id="address-container">
+                <div class="row address">
+                    <div class="col-md-6 mb-3">
+                        <label for="fax">فکس</label>
+                        <input type="text" name="{{ contact_form.fax.name }}" id="fax" class="form-control">
+                    </div>                  
+                    <div class="col-md-6 mb-3">
+                        <label for="description">توضیحات</label>
+                        <input type="text" name="{{ contact_form.description.name }}" id="description" class="form-control">
+                    </div>                  
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="active" value="true">
+
+        <button type="submit" class="btn btn-success w-100">ذخیره</button>
+    </form>
+</div>
+<div style="height: 50px;"></div>
+
+<script>
+    function addField(containerId, type) {
+        let container = document.getElementById(containerId);
+        let count = container.getElementsByClassName(type).length;  
+
+        let maxFields = {
+            "phone": 6,
+            "mobile": 4,
+            "address": 3
+        };
+
+        if (count >= maxFields[type]) {
+            alert(`حداکثر تعداد ${maxFields[type]} مجاز است!`);
+            return;
+        }
+
+        let index = count + 1;  
+
+        let div = document.createElement("div");
+        div.classList.add("row", type);
+
+        if (type === "phone") {
+            div.innerHTML = `
+                <hr>
+                    <div class="col-md-3 mb-3">
+                        <label for="id_phone_number_${index}">شماره تلفن ${index}</label>
+                        <input type="text" name="phone_number_${index}" id="id_phone_number_${index}" class="form-control">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label for="id_phone_number_${index}_name">نام مخاطب</label>
+                        <input type="text" name="phone_number_${index}_name" id="id_phone_number_${index}_name" class="form-control">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label for="phone_number_${index}_organizational_position">سمت</label>
+                        <input type="text" name="phone_number_${index}_organizational_position" id="phone_number_${index}_organizational_position" class="form-control">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label for="id_phone_number_${index}_ex">داخلی</label>
+                        <input type="text" name="phone_number_${index}_ex" id="id_phone_number_${index}_ex" class="form-control">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="id_phone_number_${index}_note">توضیحات</label>
+                        <input type="text" name="phone_number_${index}_note" id="id_phone_number_${index}_note" class="form-control">
+                    </div>
+            `;
+        } else if (type === "mobile") {
+            div.innerHTML = `
+                <hr>
+                    <div class="col-md-3 mb-3">
+                        <label for="id_mobile_number_${index}">شماره موبایل ${index}</label>
+                        <input style="text-align: right;" type="text" name="mobile_number_${index}" id="id_mobile_number_${index}" class="form-control">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="id_mobile_number_${index}_name">نام مخاطب</label>
+                        <input style="text-align: right;" type="text" name="mobile_number_${index}_name" id="id_mobile_number_${index}_name" class="form-control">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="id_mobile_number_${index}_note">توضیحات</label>
+                        <input style="text-align: right;" type="text" name="mobile_number_${index}_note" id="id_mobile_number_${index}_note" class="form-control">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="mobile_number_${index}_email">ایمیل</label>
+                        <input style="text-align: right;" type="text" name="mobile_number_${index}_email" id="mobile_number_${index}_email" class="form-control">
+                    </div>
+            `;
+        } else if (type === "address") {
+            div.innerHTML = `
+                <hr>
+                <div class="col-md-6 mb-3"><label for="id_address_${index}">آدرس ${index}</label>
+                    <input type="text" name="address_${index}" id="id_address_${index}" class="form-control">
+                </div>
+                <div class="col-md-6 mb-3"><label for="id_postal_code_${index}">کد پستی</label>
+                    <input type="text" name="postal_code_${index}" id="id_postal_code_${index}" class="form-control">
+                </div>
+            `;
+        }
+
+        container.appendChild(div);
+    }
+</script>
+
+
+{% endblock %}

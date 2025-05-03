@@ -1,0 +1,36 @@
+{% extends "master.html" %}
+
+{% block title %}
+  مدیریت پروفایل
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2 class="text-center">مدیریت حساب کاربری</h2>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">اطلاعات شما</h5>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="first_name" class="form-label">نام</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ form.first_name.value }}">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="last_name" class="form-label">نام خانوادگی</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ form.last_name.value }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">ویرایش پروفایل</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div style="margin-bottom: 50px;"></div>
+    </div>
+    <div style="height: 150px;"></div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "master.html" %}
+
+{% block title %}
+  داخلی همکاران - Smart Chekad
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">لیست داخلی همکاران</h2>
+    
+    <input 
+    style="text-align: right; margin-top: 30px;" 
+    class="d-flex ms-auto form-control me-2" 
+    type="search" 
+    placeholder="... جستجو کنید" 
+    aria-label="Search" 
+    id="searchInput">    
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th style="width: 12%;">عملیات</th>
+                <th style="width: 20%;">شماره داخلی</th>
+                <th style="width: 25%;">نام</th>
+                <th style="width: 25%;">نام فارسی</th>
+                <th style="width: 18%;">واحد</th>
+            </tr>
+        </thead>
+        <tbody id="contactsTable">
+            <tr><td>تماس</td><td>101</td><td>Nasim Keshavarz</td><td>نسیم کشاورز</td><td>مسئول دفتر</td></tr>
+            <tr><td>تماس</td><td>102</td><td>Nasim Keshavarz</td><td>نسیم کشاورز</td><td>مسئول دفتر</td></tr>
+            <tr><td>تماس</td><td>103</td><td>M.Alagheband</td><td>میثم علاقه‌بند</td><td>مدیریت</td></tr>
+            <tr><td>تماس</td><td>104</td><td>M.Alagheband</td><td>میثم علاقه‌بند</td><td>مدیریت</td></tr>
+            <tr><td>تماس</td><td>105</td><td>Fatemeh Ebrahimi</td><td>فاطمه ابراهیمی</td><td>مدیریت</td></tr>
+            <tr><td>تماس</td><td>106</td><td>Farhang Farokhpour</td><td>فرهنگ فرخ‌پور</td><td>مدیریت</td></tr>
+            <tr><td>تماس</td><td>107</td><td>Sabah Seirafi</td><td>صباح صیرفی</td><td>مدیریت</td></tr>
+            <tr><td>تماس</td><td>108</td><td>Conference</td><td>اتاق کنفرانس</td><td>مدیریت</td></tr>
+            <tr><td>تماس</td><td>111</td><td>Ali Rahimi</td><td>علی رحیمی</td><td>فناوری اطلاعات</td></tr>
+            <tr><td>تماس</td><td>112</td><td>Milad Kazemi</td><td>میلاد کاظمی</td><td>فناوری اطلاعات</td></tr>
+            <tr><td>تماس</td><td>113</td><td>Mahdi Hariri</td><td>مهدی حریری</td><td>فناوری اطلاعات</td></tr>
+            <tr><td>تماس</td><td>114</td><td>AliReza Jafarnejad</td><td>علیرضا جعفرنژاد</td><td>فناوری اطلاعات</td></tr>
+            <tr><td>تماس</td><td>115</td><td>Server Room</td><td>اتاق سرور</td><td>فناوری اطلاعات</td></tr>
+            <tr><td>تماس</td><td>120</td><td>Azita Jahanian</td><td>آزیتا جهانیان</td><td>فروش</td></tr>
+            <tr><td>تماس</td><td>121</td><td>Fahimeh Rezaei</td><td>فهیمه رضایی</td><td>فروش</td></tr>
+            <tr><td>تماس</td><td>122</td><td>Sara Lashgari</td><td>سارا لشگری</td><td>فروش</td></tr>
+            <tr><td>تماس</td><td>123</td><td>Afsaneh Rajabi</td><td>افسانه رجبی</td><td>فروش</td></tr>
+            <tr><td>تماس</td><td>124</td><td>Maryam Ahmadian</td><td>مریم احمدیان</td><td>فروش</td></tr>
+            <tr><td>تماس</td><td>130</td><td>Somayeh Bolouki</td><td>سمیه بلوکی</td><td>بازرگانی و خرید</td></tr>
+            <tr><td>تماس</td><td>131</td><td>Mohadeseh Ghorbani</td><td>محدثه قربانی</td><td>بازرگانی و خرید</td></tr>
+            <tr><td>تماس</td><td>132</td><td>Pardis Ghaderi</td><td>پردیس قادری</td><td>بازرگانی و خرید</td></tr>
+            <tr><td>تماس</td><td>133</td><td>Dorsa Akbari</td><td>درسا اکبری</td><td>بازرگانی و خرید</td></tr>
+            <tr><td>تماس</td><td>134</td><td>Mehnoush Kefayati</td><td>مهنوش کفایتی</td><td>بازرگانی و خرید</td></tr>
+            <tr><td>تماس</td><td>135</td><td>Yalda Ghasemzadeh</td><td>یلدا قاسم‌زاده</td><td>بازرگانی و خرید</td></tr>
+            <tr><td>تماس</td><td>140</td><td>Abbas Ramazani</td><td>عباس رمضانی</td><td>حسابداری</td></tr>
+            <tr><td>تماس</td><td>141</td><td>Maral Safari</td><td>مارال صفری</td><td>حسابداری</td></tr>
+            <tr><td>تماس</td><td>142</td><td>Parisa Khoshnamakian</td><td>پریسا خوشنمکیان</td><td>حسابداری</td></tr>
+            <tr><td>تماس</td><td>143</td><td>Maryam Khosravani</td><td>مریم خسروانی</td><td>حسابداری</td></tr>
+            <tr><td>تماس</td><td>150</td><td>Zohreh Farahani</td><td>زهره فراهانی</td><td>اداری</td></tr>
+            <tr><td>تماس</td><td>153</td><td>Mohammad Ali Siadat</td><td>محمدعلی سیادت</td><td>اداری</td></tr>
+            <tr><td>تماس</td><td>160</td><td>Reza Mohseni</td><td>رضا محسنی</td><td>تدارکات</td></tr>
+            <tr><td>تماس</td><td>161</td><td>Rest Room</td><td>اتاق استراحت</td><td>تدارکات</td></tr>
+
+        </tbody>
+    </table>
+</div>
+<div style="height: 100px;"></div>
+
+<script>
+    document.getElementById("searchInput").addEventListener("keyup", function() {
+        let value = this.value.toLowerCase();
+        let rows = document.querySelectorAll("#contactsTable tr");
+
+        rows.forEach(row => {
+            let text = row.textContent.toLowerCase();
+            row.style.display = text.includes(value) ? "" : "none";
+        });
+    });
+</script>
+{% endblock %}

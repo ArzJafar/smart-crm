@@ -1,0 +1,42 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<div style="background-color: #efefef;" class="header-container fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img id="logo" src="{% static '/Images/Smart-chekad-logo.png' %}" alt="Chekad Logo" height="100%" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li>
+                        <button id="toggle-theme">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-dark" href="/contacts/colleagues">داخلی همکاران</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/profile" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            مدیریت حساب
+                        </a>
+                        <ul style="margin-left: -30px;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a style="text-align: right;" class="dropdown-item" href="/profile">ویرایش حساب</a></li>
+                            <li><a style="text-align: right;" class="dropdown-item" href="/logout-pre">خروج</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-dark" href="/">خانه</a>
+                    </li>
+                    <script src="{% static 'js/theme_switcher.js' %}"></script>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+

@@ -1,0 +1,12 @@
+category_id,category_name,type
+2,elementary(5),QUESTION
+3,(5)intermediate1,QUESTION
+4,intermediate2(5),QUESTION
+5,advance(5),QUESTION
+6,elementary-5,QUESTION
+7,intermediate-5,QUESTION
+8,advance-5,QUESTION
+9,C(6),QUESTION
+10,(6)D,QUESTION
+11,E(6),QUESTION
+12,F(12),QUESTION

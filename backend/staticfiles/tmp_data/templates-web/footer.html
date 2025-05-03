@@ -1,0 +1,48 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<div class="container-fluid text-light py-4 footer" style="background-color: #666666;">
+  <div class="row">
+      <div class="col-12 text-center mb-4">
+          <h3>Chekad CRM</h3>
+      </div>
+
+        <div class="container d-flex flex-column align-items-center">
+            <div class="row d-flex justify-content-center align-items-center w-100">
+                <div style="text-align: center!important; margin-bottom: 40px;" class="col-md-3 text-md-end text-center">
+                    <img height="150px" src="{% static '/Images/Education.png' %}" class="mb-2" />
+                    <br />
+                    <a style="text-align: center;" target="_blank" href="https://chekad.com/education/" class="btn btn-dark mt-2">سایت آموزشی چکاد</a>
+                </div>
+                <div class="col-md-3 text-md-start text-center">
+                    <h5 style="text-align: right;" class="mb-3">آخرین مقالات</h5>
+                    <hr style="height: 4px;">
+                    <ul style="text-align: right;" class="list-unstyled">
+                        <li><a style="text-decoration: none;" target="_blank" href="https://chekad.com/managing-time1/" class="text-white">مدیریت زمان</a></li>
+                        <hr style="margin: 8px auto;">
+                        <li style="text-align: right;">
+                            <a style="text-decoration: none; direction: rtl; display: inline-block;" target="_blank" href="https://chekad.com/work-smarter-not-harder/" class="text-white">
+                                ۱۶ رهنمود برای آنکه هوشمندانه‌تر کار کنید، نه سخت‌تر!
+                            </a>
+                        </li>
+                        <hr style="margin: 8px auto;">
+                        <li><a style="text-decoration: none;" target="_blank" href="https://chekad.com/sheets-or-excel/" class="text-white">تفاوت های گوگل شیت با اکسل</a></li>
+                    </ul>
+                </div>
+
+    
+
+            </div>
+        </div>
+    
+
+
+    </div>
+</div>
+<div style="background-color: #5b5b5b;" class="container-fluid text-light py-1 footer after-footer">
+    <div class="col-12 text-center mt-3">
+        <p style="font-size: 10px;">&copy; Created by Chekad IT Team</p>
+        <p style="font-size: 10px;">{{ version }}</p>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazir', sans-serif;
+            background: linear-gradient(135deg, #efefef, #d1d1d1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-container form input[type="text"],
+        .form-container form input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: right;
+        }
+        .form-container form button {
+            background: #155a92;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-container form button:hover {
+            background: #135488;
+        }
+        .form-container p {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .form-container p a {
+            color: #135488;
+            text-decoration: none;
+        }
+        .input {
+            font-family: 'Vazir', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <img id="logo" src="{% static '/Images/Smart-chekad-logo-dark-theme.png' %}" alt="Chekad Logo" height="50px" />
+        <h2>ورود</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input style="width: 95%;" type="text" name="username" placeholder="نام کاربری" required>
+            <div style="position: relative; display: flex; align-items: center;">
+                <input type="password" id="password" name="password" placeholder="رمز عبور" required 
+                       style="width: 100%; padding-right: 10px; padding-left: 40px;">
+                <i id="togglePassword" class="fa fa-eye"
+                   style="position: absolute; left: 10px; top: 38%; transform: translateY(-50%); cursor: pointer; color: #666;"></i>
+            </div>
+
+            <button type="submit">ورود</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("togglePassword").addEventListener("click", function() {
+            let passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                this.classList.remove("fa-eye");
+                this.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                this.classList.remove("fa-eye-slash");
+                this.classList.add("fa-eye");
+            }
+        });
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>

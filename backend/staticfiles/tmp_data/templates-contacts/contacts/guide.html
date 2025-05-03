@@ -1,0 +1,213 @@
+{% extends "master.html" %}
+{% load static %}
+
+{% block title %}
+  Smart Chekad - Guide page
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-0">
+
+    <div class="row g-0" style="min-height: calc(100vh - 150px);">
+        <nav class="col-md-3 col-lg-2 bg-light shadow-sm p-3" style="height: 100%;">
+            <h5 class="text-center mb-4" style="padding-top: 20px;">فهرست مطالب</h5>
+            <ul class="nav flex-column guide-sidebar">
+                <li class="nav-item">
+                    <a class="nav-link" href="#locally">داخلی همکاران</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacts">مخاطبین عمومی</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="col-md-9 col-lg-10 p-5 guide-content" style="background: #f8f9fa;">
+            <section id="locally" class="mb-5 animate-section">
+                <h2 class="mb-3">داخلی همکاران</h2>
+                <div class="card p-4 shadow-sm">
+                    <p>
+                        می‌توانید در <a target="_blank" href="/contacts/colleagues">این صفحه</a> به لیست داخلی همکاران دسترسی داشته باشید
+                    </p>
+                </div>
+            </section>
+            <section id="contacts" class="mb-5 animate-section">
+                <h2 class="mb-3">راهنمای مخاطبین</h2>
+                <div class="card p-4 shadow-sm">
+                    <p>
+                        در <a target="_blank" href="/">صفحه اصلی</a> می‌توانید بین مخاطبین مجموعه جستجو کنید و در صورت نیاز به افزودن مخاطب جدید، از دکمه سمت راست بالای کادر جستجو استفاده کنید (<a target="_blank" href="/contacts/add-public">افزودن مخاطب</a>).
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<style>
+    .guide-sidebar .nav-link {
+        color: #333;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+    }
+
+    .guide-sidebar .nav-link:hover,
+    .guide-sidebar .nav-link.active {
+        background: #135488;
+        color: white;
+    }
+
+    .guide-content {
+        overflow-y: auto;
+    }
+
+    .animate-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+    }
+
+    .animate-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        .guide-sidebar {
+            position: fixed;
+            width: 200px;
+            height: 100%;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            background: white;
+        }
+
+        .guide-sidebar.active {
+            transform: translateX(0);
+        }
+
+        .guide-content {
+            margin-left: 0 !important;
+        }
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+    }
+
+    body.dark-mode .bg-light {
+        background-color: #2c2c2c !important;
+    }
+
+    body.dark-mode .guide-sidebar {
+        background-color: #2c2c2c;
+    }
+
+    body.dark-mode .guide-sidebar .nav-link {
+        color: #e0e0e0;
+    }
+
+    body.dark-mode .guide-sidebar .nav-link:hover,
+    body.dark-mode .guide-sidebar .nav-link.active {
+        background: #1e88e5;
+        color: #ffffff;
+    }
+
+    body.dark-mode .guide-content {
+        background: #212121 !important;
+    }
+
+    body.dark-mode .card {
+        background-color: #333333;
+        color: #e0e0e0;
+        border: 1px solid #444444;
+    }
+
+    body.dark-mode .list-group-item {
+        background-color: #333333;
+        color: #e0e0e0;
+        border-color: #444444;
+    }
+
+    body.dark-mode .btn-primary {
+        background-color: #1e88e5;
+        border-color: #1e88e5;
+    }
+
+    body.dark-mode .btn-primary:hover {
+        background-color: #1565c0;
+        border-color: #1565c0;
+    }
+
+    @media (max-width: 768px) {
+        body.dark-mode .guide-sidebar {
+            background: #2c2c2c;
+        }
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        function checkVisibility() {
+            $('.animate-section').each(function() {
+                var top = $(this).offset().top;
+                var windowBottom = $(window).scrollTop() + $(window).height();
+                if (top < windowBottom - 50) {
+                    $(this).addClass('visible');
+                }
+            });
+        }
+
+        $(window).on('scroll', checkVisibility);
+        checkVisibility();
+
+        $('.guide-sidebar .nav-link').click(function(e) {
+            e.preventDefault();
+            $('.guide-sidebar .nav-link').removeClass('active');
+            $(this).addClass('active');
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top - 50
+            }, 500);
+        });
+
+        if ($(window).width() <= 768) {
+            $('<button class="btn btn-primary m-3">منو</button>').insertBefore('.guide-sidebar').click(function() {
+                $('.guide-sidebar').toggleClass('active');
+            });
+        }
+    });
+    $(document).ready(function() {
+    function checkVisibility() {
+        $('.animate-section').each(function() {
+            var top = $(this).offset().top;
+            var windowBottom = $(window).scrollTop() + $(window).height();
+            if (top < windowBottom - 50) {
+                $(this).addClass('visible');
+            }
+        });
+    }
+
+    $(window).on('scroll', checkVisibility);
+    checkVisibility();
+
+    $('.guide-sidebar .nav-link').click(function(e) {
+        e.preventDefault();
+        $('.guide-sidebar .nav-link').removeClass('active');
+        $(this).addClass('active');
+        var headerHeight = $('header').outerHeight() || 70;
+        $('html, body').animate({
+            scrollTop: $($(this).attr('href')).offset().top - headerHeight - 10
+        }, 500);
+    });
+
+    if ($(window).width() <= 768) {
+        $('<button class="btn btn-primary m-3">منو</button>').insertBefore('.guide-sidebar').click(function() {
+            $('.guide-sidebar').toggleClass('active');
+        });
+    }
+});
+</script>
+{% endblock %}

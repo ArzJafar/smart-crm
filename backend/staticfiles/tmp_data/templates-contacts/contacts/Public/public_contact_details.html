@@ -1,0 +1,355 @@
+{% extends "master.html" %}
+{% load custom_filters %}
+
+{% block title %}
+  جزئیات مخاطب
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 p-4 shadow-lg rounded bg-light container-list" style="direction: rtl;">
+    <h2 class="text-center mb-4">جزئیات مخاطب</h2>
+    <h4 style="text-align: center;" class="card-title text-primary mb-3">
+      {% if contact.first_name and contact.last_name %}
+        {{ contact.first_name }} {{ contact.last_name }}
+      {% elif contact.last_name %}
+        {{ contact.last_name }}
+      {% elif contact.first_name %}
+        {{ contact.first_name }}
+      {% else %}
+        {{ contact.organization }}
+      {% endif %}
+    </h4>
+     <div style="text-align: right;" class="card mb-4">
+         <div style="text-align: right;" style="background-color: #155a92; text-align: right;" class="card-header text-white">اطلاعات اصلی</div>
+         <div style="text-align: right;" class="card-body">
+            <div style="text-align: right;" class="row">
+                <div style="text-align: right;" class="col-md-4 mb-3">
+                    <label for="id_first_name">نام</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.first_name }}" id="id_first_name" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-4 mb-3">
+                    <label for="id_last_name">نام خانوادگی</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.last_name }}" id="id_last_name" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-4 mb-3">
+                    <label for="id_organization">نام سازمان</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.organization }}" id="id_organization" class="form-control" readonly>
+                </div>
+            </div>
+            <div style="text-align: right;" class="row">
+                <div style="text-align: right;" class="col-md-4 mb-3">
+                    <label for="id_category">دسته‌بندی</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.category }}" id="id_category" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-4 mb-3">
+                    <label for="id_business_type">نوع کسب‌وکار</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.business_type }}" id="id_business_type" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-4 mb-3">
+                    <label for="id_sex">جنسیت</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.sex }}" id="id_sex" class="form-control" readonly>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+     <div style="text-align: right;" class="card mb-4">
+         <div style="text-align: right;" style="background-color: #155a92; text-align: right;" class="card-header text-white">اطلاعات شماره تلفن</div>
+         <div style="text-align: right;" class="card-body" id="phone-container">
+             <div style="text-align: right;" class="row phone">
+                
+                {% if contact.phone_number_1 %}
+                <div style="text-align: right;" class="col-md-3 mb-3">
+                    <label for="id_phone_number_1">شماره</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_1 }}" id="id_phone_number_1" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="id_phone_number_1">نام مخاطب</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_1_name }}" id="id_phone_number_1" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="phone_number_1_organizational_position">سمت</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_1_organizational_position }}" id="phone_number_1_organizational_position" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="id_phone_number_1_ex">داخلی</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_1_ex }}" id="id_phone_number_1_ex" class="form-control" readonly>
+                </div>
+                <div style="text-align: rtl;" class="col-md-3 mb-3">
+                    <label for="id_phone_number_1_note">توضیحات</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_1_note }}" id="id_phone_number_1_note" class="form-control" readonly>
+                </div>
+                {% endif %}
+                {% if contact.phone_number_2 %}
+                <hr>
+                <div style="text-align: right;" class="col-md-3 mb-3">
+                    <label for="id_phone_number_2">شماره</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_2 }}" id="id_phone_number_2" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="id_phone_number_2">نام مخاطب</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_2_name }}" id="id_phone_number_2" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="phone_number_2_organizational_position">سمت</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_2_organizational_position }}" id="phone_number_2_organizational_position" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="id_phone_number_2_ex">داخلی</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_2_ex }}" id="id_phone_number_2_ex" class="form-control" readonly>
+                </div>
+                <div style="text-align: rtl;" class="col-md-3 mb-3">
+                    <label for="id_phone_number_2_note">توضیحات</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_2_note }}" id="id_phone_number_2_note" class="form-control" readonly>
+                </div>
+            {% endif %}
+
+            {% if contact.phone_number_3 %}
+                <hr>
+                <div style="text-align: right;" class="col-md-3 mb-3">
+                    <label for="id_phone_number_3">شماره</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_3 }}" id="id_phone_number_3" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="id_phone_number_3">نام مخاطب</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_3_name }}" id="id_phone_number_3" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="phone_number_3_organizational_position">سمت</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_3_organizational_position }}" id="phone_number_3_organizational_position" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="id_phone_number_3_ex">داخلی</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_3_ex }}" id="id_phone_number_3_ex" class="form-control" readonly>
+                </div>
+                <div style="text-align: rtl;" class="col-md-3 mb-3">
+                    <label for="id_phone_number_3_note">توضیحات</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_3_note }}" id="id_phone_number_3_note" class="form-control" readonly>
+                </div>
+            {% endif %}
+
+            {% if contact.phone_number_4 %}
+                <hr>
+                <div style="text-align: right;" class="col-md-3 mb-4">
+                    <label for="id_phone_number_4">شماره</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_4 }}" id="id_phone_number_4" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-4">
+                    <label for="id_phone_number_4">نام مخاطب</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_4_name }}" id="id_phone_number_4" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-4">
+                    <label for="phone_number_4_organizational_position">سمت</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_4_organizational_position }}" id="phone_number_4_organizational_position" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-4">
+                    <label for="id_phone_number_4_ex">داخلی</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_4_ex }}" id="id_phone_number_4_ex" class="form-control" readonly>
+                </div>
+                <div style="text-align: rtl;" class="col-md-3 mb-4">
+                    <label for="id_phone_number_4_note">توضیحات</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_4_note }}" id="id_phone_number_4_note" class="form-control" readonly>
+                </div>
+            {% endif %}
+
+            {% if contact.phone_number_5 %}
+                <hr>
+                <div style="text-align: right;" class="col-md-3 mb-5">
+                    <label for="id_phone_number_5">شماره</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_5 }}" id="id_phone_number_5" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-5">
+                    <label for="id_phone_number_5">نام مخاطب</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_5_name }}" id="id_phone_number_5" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-5">
+                    <label for="phone_number_5_organizational_position">سمت</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_5_organizational_position }}" id="phone_number_5_organizational_position" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-5">
+                    <label for="id_phone_number_5_ex">داخلی</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_5_ex }}" id="id_phone_number_5_ex" class="form-control" readonly>
+                </div>
+                <div style="text-align: rtl;" class="col-md-3 mb-5">
+                    <label for="id_phone_number_5_note">توضیحات</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_5_note }}" id="id_phone_number_5_note" class="form-control" readonly>
+                </div>
+            {% endif %}
+
+            {% if contact.phone_number_6 %}
+                <hr>
+                <div style="text-align: right;" class="col-md-3 mb-6">
+                    <label for="id_phone_number_6">شماره</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_6 }}" id="id_phone_number_6" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-6">
+                    <label for="id_phone_number_6">نام مخاطب</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_6_name }}" id="id_phone_number_6" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-6">
+                    <label for="phone_number_6_organizational_position">سمت</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_6_organizational_position }}" id="phone_number_6_organizational_position" class="form-control" readonly>
+                </div>
+                <div style="text-align: right;" class="col-md-2 mb-6">
+                    <label for="id_phone_number_6_ex">داخلی</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_6_ex }}" id="id_phone_number_6_ex" class="form-control" readonly>
+                </div>
+                <div style="text-align: rtl;" class="col-md-3 mb-6">
+                    <label for="id_phone_number_6_note">توضیحات</label>
+                    <input style="text-align: right;" type="text" value="{{ contact.phone_number_6_note }}" id="id_phone_number_6_note" class="form-control" readonly>
+                </div>
+            {% endif %}
+
+            </div>
+        </div>            
+    </div>
+
+     <div style="text-align: right;" class="card mb-4">
+         <div style="text-align: right;" style="background-color: #155a92; text-align: right;" class="card-header text-white">اطلاعات موبایل</div>
+         <div style="text-align: right;" class="card-body" id="mobile-container">
+             <div style="text-align: right;" class="row mobile">
+                {% if contact.mobile_number_1 %}
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_1">شماره موبایل</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_1 }}" id="id_mobile_number_1" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_1_name">نام مخاطب</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_1_name }}" id="id_mobile_number_1_name" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_1_note">توضیحات</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_1_note }}" id="id_mobile_number_1_note" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="mobile_number_1_email">ایمیل</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_1_email }}" id="mobile_number_1_email" class="form-control" readonly>
+                    </div>
+                {% endif %}
+                {% if contact.mobile_number_2 %}
+                <hr>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_2">شماره موبایل</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_2 }}" id="id_mobile_number_2" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_2_name">نام مخاطب</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_2_name }}" id="id_mobile_number_2_name" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_2_note">توضیحات</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_2_note }}" id="id_mobile_number_2_note" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="mobile_number_2_email">ایمیل</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_2_email }}" id="mobile_number_2_email" class="form-control" readonly>
+                    </div>
+                {% endif %}
+                {% if contact.mobile_number_3 %}
+                <hr>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_3">شماره موبایل</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_3 }}" id="id_mobile_number_3" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_3_name">نام مخاطب</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_3_name }}" id="id_mobile_number_3_name" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_3_note">توضیحات</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_3_note }}" id="id_mobile_number_3_note" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="mobile_number_3_email">ایمیل</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_3_email }}" id="mobile_number_3_email" class="form-control" readonly>
+                    </div>
+                {% endif %}
+                {% if contact.mobile_number_4 %}
+                <hr>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_4">شماره موبایل</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_4 }}" id="id_mobile_number_4" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_4_name">نام مخاطب</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_4_name }}" id="id_mobile_number_4_name" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="id_mobile_number_4_note">توضیحات</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_4_note }}" id="id_mobile_number_4_note" class="form-control" readonly>
+                    </div>
+                    <div style="text-align: right;" class="col-md-3 mb-3">
+                        <label for="mobile_number_4_email">ایمیل</label>
+                        <input style="text-align: right;" type="text" value="{{ contact.mobile_number_4_email }}" id="mobile_number_4_email" class="form-control" readonly>
+                    </div>
+                {% endif %}                
+            </div>
+        </div>
+    </div>
+
+     <div style="text-align: right;" class="card mb-4">
+         <div style="text-align: right;" style="background-color: #155a92; text-align: right;" class="card-header text-white">اطلاعات آدرس</div>
+         <div style="text-align: right;" class="card-body" id="address-container">
+             <div style="text-align: right;" class="row address">
+                {% if contact.address_1 or contact.postal_code_1 %}
+                <div style="text-align: right;" class="col-md-10 mb-3">
+                    <label for="id_address_1">آدرس</label>
+                     <input style="text-align: right;" type="text" value="{{ contact.address_1 }}" id="id_address_1" class="form-control" readonly>
+                </div>
+                 <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="id_postal_code_1">کد پستی</label>
+                     <input style="text-align: right;" type="text" value="{{ contact.postal_code_1 }}" id="id_postal_code_1" class="form-control" readonly>
+                </div>
+                {% endif %}
+                {% if contact.address_2 or contact.postal_code_2 %}
+                <hr>
+                <div style="text-align: right;" class="col-md-10 mb-3">
+                    <label for="id_address_2">آدرس</label>
+                     <input style="text-align: right;" type="text" value="{{ contact.address_2 }}" id="id_address_2" class="form-control" readonly>
+                </div>
+                 <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="id_postal_code_2">کد پستی</label>
+                     <input style="text-align: right;" type="text" value="{{ contact.postal_code_2 }}" id="id_postal_code_2" class="form-control" readonly>
+                </div>
+                {% endif %}
+                {% if contact.address_3 or contact.postal_code_3 %}
+                <hr>
+                <div style="text-align: right;" class="col-md-10 mb-3">
+                    <label for="id_address_3">آدرس</label>
+                     <input style="text-align: right;" type="text" value="{{ contact.address_3 }}" id="id_address_3" class="form-control" readonly>
+                </div>
+                 <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="id_postal_code_3">کد پستی</label>
+                     <input style="text-align: right;" type="text" value="{{ contact.postal_code_3 }}" id="id_postal_code_3" class="form-control" readonly>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+     <div style="text-align: right;" class="card mb-4">
+         <div style="text-align: right;" style="background-color: #155a92; text-align: right;" class="card-header text-white">اطلاعات متفرقه</div>
+         <div style="text-align: right;" class="card-body" id="address-container">
+             <div style="text-align: right;" class="row address">
+                <div style="text-align: right;" class="col-md-10 mb-3">
+                    <label for="description">توضیحات</label>
+                     <input style="text-align: right;" type="text" value="{{ contact.description }}" id="description" class="form-control" readonly>
+                </div>                  
+                 <div style="text-align: right;" class="col-md-2 mb-3">
+                    <label for="fax">فکس</label>
+                     <input style="text-align: right;" type="text" value="{{ contact.fax }}" id="fax" class="form-control" readonly>
+                </div>                  
+            </div>
+        </div>
+    </div>
+    {% if user.is_staff %}
+    <div class="text-center">
+        <a href="{% url 'contacts:edit_contact' contact.id %}" class="btn btn-primary mb-3">ویرایش</a>
+    </div>
+    {% endif %}
+</div>
+<div class="text-center">
+    <a href="/" class="btn btn-primary mt-4">بازگشت به صفحه اصلی</a>
+</div>
+<div style="margin-bottom: 50px;"></div>
+
+{% endblock %}
