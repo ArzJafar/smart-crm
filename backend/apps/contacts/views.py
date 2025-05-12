@@ -12,13 +12,12 @@ from django.db.models import Q
 from django.contrib.auth.decorators import user_passes_test
 import jdatetime
 from apps.web.models import UserActivityLog
-
-jdatetime.set_locale(jdatetime.FA_LOCALE)
-
-
 from rest_framework.viewsets import ModelViewSet
 from .models import Public_Contact
 from .serializers import ContactSerializer
+
+jdatetime.set_locale(jdatetime.FA_LOCALE)
+
 
 class ContactViewSet(ModelViewSet):
     queryset = Public_Contact.objects.all()

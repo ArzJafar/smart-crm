@@ -1,5 +1,24 @@
+:root {
+  --primary-color: #2196f3;
+  --primary-light: #64b5f6;
+  --primary-dark: #1976d2;
+  --background-light: #ffffff;
+  --background-dark: #121212;
+  --surface-dark: #1e1e1e;
+  --text-light: #333333;
+  --text-dark: #ffffff;
+  --text-secondary-dark: #b0b0b0;
+}
+
 .App {
   text-align: center;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+.App.dark-mode {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
 }
 
 .App-logo {
@@ -14,18 +33,91 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--surface-dark);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+.App.dark-mode .App-header {
+  background-color: var(--background-dark);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--primary-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.App.dark-mode .App-link {
+  color: var(--primary-color);
+}
+
+.App.dark-mode .App-link:hover {
+  color: var(--primary-light);
+}
+
+/* Modern UI Elements */
+.card {
+  background-color: var(--surface-dark);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.App.dark-mode .card {
+  background-color: #2d2d2d;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+}
+
+.App.dark-mode button {
+  background-color: var(--primary-dark);
+}
+
+.App.dark-mode button:hover {
+  background-color: var(--primary-color);
+}
+
+/* Text styles */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-dark);
+  transition: color 0.3s ease;
+}
+
+.App.dark-mode h1,
+.App.dark-mode h2,
+.App.dark-mode h3,
+.App.dark-mode h4,
+.App.dark-mode h5,
+.App.dark-mode h6 {
+  color: var(--text-dark);
+}
+
+p {
+  color: var(--text-secondary-dark);
+  transition: color 0.3s ease;
 }
 
 @keyframes App-logo-spin {
